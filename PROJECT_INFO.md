@@ -2,13 +2,15 @@
 
 ## Group Members
 
-- Student 1:
-- Student 2:
-- Student 3 (if applicable):
+- Student Keila dos Santos(34668):
+- Student Rita Miranda(34581):
+
 
 ## Project Theme
+| Receitas | https://www.themealdb.com/api.php |
 
 ## External API Used
+//Por decidir
 
 - API name:
 - API link:
@@ -16,16 +18,16 @@
 
 ## Backend Repository
 
-- Link:
+- Link: https://github.com/ritamiranda001/ProjetoFinal_TW.git
 
 ## Main Features
 
-1.
-2.
-3.
-4.
+1.Dev(master)
+2.feature-keila
+3.feature-rita
 
 ## Pages
+//Por decidir 
 
 - Home:
 - List:
@@ -33,6 +35,7 @@
 - Form/Create/Edit:
 
 ## Data Stored in the Backend
+//Por decidir
 
 Examples:
 
