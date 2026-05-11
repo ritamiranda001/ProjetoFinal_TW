@@ -1,0 +1,45 @@
+#!/bin/sh
+# =============================================================================
+#  IPVC Web Technologies — Pre-commit hook
+#  Impede modificações nos ficheiros do sistema de avaliação.
+# =============================================================================
+
+# Bypass para o professor: git config hooks.bypass true
+if [ "$(git config hooks.bypass)" = "true" ]; then
+  exit 0
+fi
+
+PROTECTED_DIRS="scripts .github"
+PROTECTED_FILES="angular.json eslint.config.js tsconfig.json tsconfig.app.json tsconfig.spec.json"
+
+STAGED=$(git diff --cached --name-only 2>/dev/null)
+
+for dir in $PROTECTED_DIRS; do
+  if echo "$STAGED" | grep -qE "^${dir}/"; then
+    echo ""
+    echo "  ╔══════════════════════════════════════════════════════════════╗"
+    echo "  ║  COMMIT REJEITADO                                            ║"
+    echo "  ╠══════════════════════════════════════════════════════════════╣"
+    echo "  ║  Não é permitido modificar ficheiros em: ${dir}/             "
+    echo "  ║  Esta pasta faz parte do sistema de avaliação do trabalho.   ║"
+    echo "  ╚══════════════════════════════════════════════════════════════╝"
+    echo ""
+    exit 1
+  fi
+done
+
+for file in $PROTECTED_FILES; do
+  if echo "$STAGED" | grep -qE "^${file}$"; then
+    echo ""
+    echo "  ╔══════════════════════════════════════════════════════════════╗"
+    echo "  ║  COMMIT REJEITADO                                            ║"
+    echo "  ╠══════════════════════════════════════════════════════════════╣"
+    echo "  ║  Não é permitido modificar: ${file}                          "
+    echo "  ║  Este ficheiro faz parte da configuração base do projeto.    ║"
+    echo "  ╚══════════════════════════════════════════════════════════════╝"
+    echo ""
+    exit 1
+  fi
+done
+
+exit 0

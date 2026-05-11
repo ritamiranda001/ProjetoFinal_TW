@@ -1,0 +1,51 @@
+{
+  "name": "webtech-final-project-frontend-template",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "prepare": "git rev-parse --git-dir > /dev/null 2>&1 && git config core.hooksPath .githooks || true",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:validate": "node scripts/test-validate.js",
+    "validate": "node scripts/validate-project.js",
+    "grade": "node scripts/validate-project.js --grade",
+    "grade:mini": "node scripts/grade-mini.js",
+    "grade:test": "node scripts/grade-test.js",
+    "grade:cleanup": "node scripts/grade-cleanup.js",
+    "quality": "npm run validate && npm run lint && npm run test:ci && npm run build"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^21.2.12",
+    "@angular/common": "^21.2.12",
+    "@angular/compiler": "^21.2.12",
+    "@angular/core": "^21.2.12",
+    "@angular/forms": "^21.2.12",
+    "@angular/platform-browser": "^21.2.12",
+    "@angular/platform-browser-dynamic": "^21.2.12",
+    "@angular/router": "^21.2.12",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.1"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.2.10",
+    "@angular/cli": "^21.2.10",
+    "@angular/compiler-cli": "^21.2.12",
+    "@types/jasmine": "~5.1.0",
+    "angular-eslint": "21.0.1",
+    "eslint": "^9.39.1",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "8.46.4"
+  }
+}
