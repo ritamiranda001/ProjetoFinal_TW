@@ -38,6 +38,7 @@
     "@angular/compiler-cli": "^21.2.12",
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "21.0.1",
+    "concurrently": "^9.2.1",
     "eslint": "^9.39.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
@@ -47,5 +48,19 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "8.46.4"
-  }
+  },
+  "description": "This repository is the official Angular frontend template for the final project.\r Focus on building your application features. The project already includes automated checks for structure, linting, tests, and build.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ritamiranda001/ProjetoFinal_TW.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ritamiranda001/ProjetoFinal_TW/issues"
+  },
+  "homepage": "https://github.com/ritamiranda001/ProjetoFinal_TW#readme"
 }
