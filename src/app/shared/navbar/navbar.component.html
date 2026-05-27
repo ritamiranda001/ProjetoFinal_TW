@@ -1,6 +1,21 @@
 <nav>
-  <a routerLink="/recipes" routerLinkActive="active">Receitas</a>
-  <a routerLink="/favorites" routerLinkActive="active">Favoritos</a>
-  <a routerLink="/login" routerLinkActive="active">Login</a>
-  <a routerLink="/register" routerLinkActive="active">Registo</a>
+  <a class="nav-brand" routerLink="/recipes">
+    🍴 RecipeApp
+  </a>
+
+  <div class="nav-links">
+    <a routerLink="/recipes" routerLinkActive="active">Receitas</a>
+    <a routerLink="/favorites" routerLinkActive="active" *ngIf="authService.isLoggedIn()">Favoritos</a>
+  </div>
+
+  <div class="nav-right">
+    <ng-container *ngIf="!authService.isLoggedIn()">
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/register" routerLinkActive="active" class="btn-login">Registo</a>
+    </ng-container>
+    <ng-container *ngIf="authService.isLoggedIn()">
+      <span>👋 {{ authService.getUser()?.name }}</span>
+      <button class="btn-logout" (click)="authService.logout()">Sair</button>
+    </ng-container>
+  </div>
 </nav>

@@ -1,0 +1,85 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 70px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links a {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: #fff0eb;
+  color: var(--primary);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-right span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.btn-logout {
+  background: none;
+  border: 1.5px solid var(--border);
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-login {
+  background: var(--primary);
+  color: white !important;
+  padding: 8px 20px !important;
+  border-radius: 20px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-login:hover {
+  background: var(--primary-dark) !important;
+  color: white !important;
+}
