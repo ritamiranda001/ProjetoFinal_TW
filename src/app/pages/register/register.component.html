@@ -1,29 +1,37 @@
-<div class="auth-container">
-  <h2>Criar Conta</h2>
-
-  <form (ngSubmit)="onSubmit()">
-    <div>
-      <label>Nome</label>
-      <input type="text" [(ngModel)]="name" name="name" required />
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="icon">👨‍🍳</div>
+      <h2>Criar conta</h2>
+      <p>Junta-te e começa a guardar as tuas receitas favoritas</p>
     </div>
 
-    <div>
-      <label>Email</label>
-      <input type="email" [(ngModel)]="email" name="email" required />
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" [(ngModel)]="name" name="name" placeholder="O teu nome" required />
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="o@exemplo.com" required />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Mínimo 8 caracteres" required minlength="8" />
+      </div>
+
+      <div class="error-msg" *ngIf="error">{{ error }}</div>
+      <div class="success-msg" *ngIf="success">{{ success }}</div>
+
+      <button type="submit" class="btn-submit" [disabled]="loading">
+        {{ loading ? 'A criar conta...' : 'Criar conta' }}
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      Já tens conta? <a routerLink="/login">Entra aqui</a>
     </div>
-
-    <div>
-      <label>Password</label>
-      <input type="password" [(ngModel)]="password" name="password" required minlength="8" />
-    </div>
-
-    <p class="error" *ngIf="error">{{ error }}</p>
-    <p class="success" *ngIf="success">{{ success }}</p>
-
-    <button type="submit" [disabled]="loading">
-      {{ loading ? 'A criar conta...' : 'Registar' }}
-    </button>
-  </form>
-
-  <p>Já tens conta? <a routerLink="/login">Entra aqui</a></p>
+  </div>
 </div>

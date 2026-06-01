@@ -1,1 +1,64 @@
-<h1>Receitas</h1>
+<div class="recipes-page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Descobre Receitas Deliciosas</h1>
+    <p>Pesquisa entre milhares de receitas de todo o mundo</p>
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Pesquisa uma receita... ex: pasta, chicken, soup"
+        (keyup.enter)="onSearch()"
+      />
+      <button (click)="onSearch()">🔍 Pesquisar</button>
+    </div>
+  </div>
+
+  <!-- Categorias -->
+  <div class="categories">
+    <button
+      *ngFor="let cat of categories"
+      class="cat-btn"
+      [class.active]="selectedCategory === cat.strCategory"
+      (click)="onCategory(cat.strCategory)"
+    >
+      {{ cat.strCategory }}
+    </button>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>A carregar receitas...</p>
+  </div>
+
+  <!-- Sem resultados -->
+  <div class="empty" *ngIf="!loading && recipes.length === 0">
+    <p>😕 Nenhuma receita encontrada. Tenta outra pesquisa!</p>
+  </div>
+
+  <!-- Grid de receitas -->
+  <div class="recipes-grid" *ngIf="!loading && recipes.length > 0">
+    <div
+      class="recipe-card"
+      *ngFor="let recipe of recipes"
+      (click)="goToDetail(recipe.idMeal)"
+    >
+      <div class="card-image">
+        <img [src]="recipe.strMealThumb" [alt]="recipe.strMeal" />
+        <div class="card-overlay">
+          <span>Ver receita →</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3>{{ recipe.strMeal }}</h3>
+        <div class="card-meta">
+          <span class="tag" *ngIf="recipe.strCategory">{{ recipe.strCategory }}</span>
+          <span class="tag area" *ngIf="recipe.strArea">{{ recipe.strArea }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
