@@ -1,1 +1,29 @@
-<p>register works!</p>
+<div class="auth-container">
+  <h2>Criar Conta</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label>Nome</label>
+      <input type="text" [(ngModel)]="name" name="name" required />
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input type="email" [(ngModel)]="email" name="email" required />
+    </div>
+
+    <div>
+      <label>Password</label>
+      <input type="password" [(ngModel)]="password" name="password" required minlength="8" />
+    </div>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+    <p class="success" *ngIf="success">{{ success }}</p>
+
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'A criar conta...' : 'Registar' }}
+    </button>
+  </form>
+
+  <p>Já tens conta? <a routerLink="/login">Entra aqui</a></p>
+</div>
