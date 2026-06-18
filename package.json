@@ -2,8 +2,8 @@
   "name": "webtech-final-project-frontend-template",
   "version": "0.0.0",
   "scripts": {
+    "prepare": "",
     "ng": "ng",
-    "prepare": "git rev-parse --git-dir > /dev/null 2>&1 && git config core.hooksPath .githooks || true",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -28,6 +28,7 @@
     "@angular/platform-browser": "^21.2.12",
     "@angular/platform-browser-dynamic": "^21.2.12",
     "@angular/router": "^21.2.12",
+    "node-fetch": "^2.7.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.1"
