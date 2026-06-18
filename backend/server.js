@@ -3,12 +3,16 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Database = require('better-sqlite3');
+const fetch = require('node-fetch');
 
 const app = express();
 const PORT = 3000;
 const JWT_SECRET = 'recipes-secret-key';
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:4200',
+  credentials: true
+}));
 app.use(express.json());
 
 const db = new Database('database.db');
@@ -98,6 +102,42 @@ app.delete('/favorites/:meal_id', authenticateToken, (req, res) => {
   if (!exists) return res.status(404).json({ message: 'Favorito não encontrado' });
   db.prepare('DELETE FROM favorites WHERE user_id = ? AND meal_id = ?').run(req.user.id, meal_id);
   res.json({ message: 'Removido dos favoritos' });
+});
+
+// ─── RECEITAS (proxy TheMealDB) ───────────────────────────────────────────────
+app.get('/recipes/search', async (req, res) => {
+  const { q } = req.query;
+  if (!q) return res.status(400).json({ message: 'Parâmetro q é obrigatório' });
+
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(q)}`);
+    const data = await response.json();
+    res.json(data);
+  } catch {
+    res.status(500).json({ message: 'Erro ao contactar TheMealDB' });
+  }
+});
+
+app.get('/recipes/categories', async (req, res) => {
+  try {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
+    const data = await response.json();
+    res.json(data);
+  } catch {
+    res.status(500).json({ message: 'Erro ao contactar TheMealDB' });
+  }
+});
+
+app.get('/recipes/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+    const data = await response.json();
+    if (!data.meals) return res.status(404).json({ message: 'Receita não encontrada' });
+    res.json(data);
+  } catch {
+    res.status(500).json({ message: 'Erro ao contactar TheMealDB' });
+  }
 });
 
 app.listen(PORT, () => {
