@@ -13,7 +13,7 @@ nav {
 }
 
 .nav-brand {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary);
@@ -39,7 +39,7 @@ nav {
 
 .nav-links a:hover,
 .nav-links a.active {
-  background: #fff0eb;
+  background: #e9efe6;
   color: var(--primary);
 }
 
