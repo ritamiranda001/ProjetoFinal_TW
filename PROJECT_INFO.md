@@ -2,48 +2,45 @@
 
 ## Group Members
 
-- Student Keila dos Santos(34668):
-- Student Rita Miranda(34581):
-
+- Keila dos Santos (34668)
+- Rita Miranda (34581)
 
 ## Project Theme
-| Receitas | https://www.themealdb.com/api.php |
+
+Recipe Tracker — descoberta e gestão pessoal de receitas culinárias.
 
 ## External API Used
-//Por decidir
 
-- API name:
-- API link:
-- Requires API key? Yes / No
+- API name: TheMealDB
+- API link: https://www.themealdb.com/api.php
+- Requires API key? No (chave de teste pública "1")
 
 ## Backend Repository
 
-- Link: https://github.com/ritamiranda001/ProjetoFinal_TW.git
+- Link: https://github.com/ritamiranda001/ProjetoFinal_TW (pasta `backend/` deste mesmo repositório)
 
 ## Main Features
 
-1.Dev(master)
-2.feature-keila
-3.feature-rita
+1. Pesquisar receitas por nome e por categoria (API externa TheMealDB)
+2. Ver o detalhe de uma receita (ingredientes, medidas e modo de preparação)
+3. Registo e login de utilizadores (JWT)
+4. Guardar e remover receitas dos favoritos (persistido no nosso backend)
 
 ## Pages
-//Por decidir 
 
-- Home:
-- List:
-- Detail:
-- Form/Create/Edit:
+- Home / Receitas (`/recipes`): pesquisa, filtro por categoria, grelha de resultados
+- Detalhe (`/recipes/:id`): ingredientes, instruções, botão de favoritar
+- Favoritos (`/favorites`): lista de receitas guardadas pelo utilizador autenticado
+- Login (`/login`) e Registo (`/register`)
 
 ## Data Stored in the Backend
-//Por decidir
 
-Examples:
-
-- favourites
-- reviews
-- teams
-- saved cities
-- watchlist
-- scores
+- users (nome, email, password com hash)
+- favorites (utilizador, id/nome/imagem da receita)
 
 ## Notes
+
+Arquitetura: o frontend consome a API externa (TheMealDB) diretamente para
+pesquisa/listagem/detalhe de receitas, e consome o nosso backend (Node/Express,
+pasta `backend/`) para autenticação e para guardar os favoritos de cada utilizador.
+Backend e frontend ficam no mesmo repositório (acordado com o professor).
