@@ -75,4 +75,9 @@ You can edit:
 
 ### Project Notes
 
-Add your project-specific notes here.
+Recipe Tracker: pesquisa de receitas (TheMealDB), detalhe com ingredientes e
+instruções, autenticação (login/registo) e favoritos guardados no backend
+do grupo. O backend (Node/Express) está na pasta `backend/` deste mesmo
+repositório. Em desenvolvimento, corre `npm start` na raiz (frontend) e,
+noutro terminal, `npm run dev` dentro de `backend/` (a app espera o backend
+em `http://localhost:3000`, com proxy automático via `proxy.conf.json`).
