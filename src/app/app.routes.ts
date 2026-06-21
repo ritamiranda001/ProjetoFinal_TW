@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { RecipesComponent } from './pages/recipes/recipes.component';
-import { RecipeDetailComponent } from './pages/recipe-detail/recipe-detail.component';
-import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { LoginComponent } from './features/login/login.component';
+import { RegisterComponent } from './features/register/register.component';
+import { RecipesComponent } from './features/recipes/recipes.component';
+import { RecipeDetailComponent } from './features/recipe-detail/recipe-detail.component';
+import { FavoritesComponent } from './features/favorites/favorites.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
@@ -11,6 +12,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'recipes/:id', component: RecipeDetailComponent },
-  { path: 'favorites', component: FavoritesComponent },
+  { path: 'favorites', component: FavoritesComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: 'recipes' }
 ];

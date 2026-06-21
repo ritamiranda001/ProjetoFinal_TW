@@ -1,0 +1,74 @@
+<div class="recipes-page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Descobre Receitas Deliciosas</h1>
+    <p>Pesquisa entre milhares de receitas de todo o mundo</p>
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Pesquisa uma receita... ex: pasta, chicken, soup"
+        (keyup.enter)="onSearch()"
+      />
+      <button (click)="onSearch()">🔍 Pesquisar</button>
+    </div>
+  </div>
+
+  <!-- Categorias -->
+  <div class="categories">
+    @for (cat of categories; track cat.idCategory) {
+      <button
+        class="cat-chip"
+        [class.active]="selectedCategory === cat.strCategory"
+        (click)="onCategory(cat.strCategory)"
+      >
+        <span class="cat-icon">{{ getCategoryIcon(cat.strCategory) }}</span>
+        <span class="cat-label">{{ cat.strCategory }}</span>
+      </button>
+    }
+  </div>
+
+  <!-- Loading -->
+  @if (loading) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>A carregar receitas...</p>
+    </div>
+  }
+
+  <!-- Sem resultados -->
+  @if (!loading && recipes.length === 0) {
+    <div class="empty">
+      <p>😕 Nenhuma receita encontrada. Tenta outra pesquisa!</p>
+    </div>
+  }
+
+  <!-- Grid de receitas -->
+  @if (!loading && recipes.length > 0) {
+    <div class="recipes-grid">
+      @for (recipe of recipes; track recipe.idMeal) {
+        <a class="recipe-card" [routerLink]="['/recipes', recipe.idMeal]">
+          <div class="card-image">
+            @if (recipe.strCategory) {
+              <span class="card-badge">{{ getCategoryIcon(recipe.strCategory) }} {{ recipe.strCategory }}</span>
+            }
+            <img [src]="recipe.strMealThumb" [alt]="recipe.strMeal" />
+            <div class="card-overlay">
+              <span>Ver receita →</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>{{ recipe.strMeal }}</h3>
+            @if (recipe.strArea) {
+              <div class="card-meta">
+                <span class="tag area">🌍 {{ recipe.strArea }}</span>
+              </div>
+            }
+          </div>
+        </a>
+      }
+    </div>
+  }
+
+</div>
