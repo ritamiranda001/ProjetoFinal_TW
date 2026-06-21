@@ -1,3 +1,5 @@
-cnode_modules/
 node_modules/
 database.db
+database.db-journal
+.env
+*.log
